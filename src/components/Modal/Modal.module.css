@@ -1,0 +1,16 @@
+.modalBackground {
+  position: absolute;
+  width: auto; /* Width can be set to auto or a fixed value */
+  height: auto; /* Height can be set to auto or a fixed value */
+  top: 100%; /* Position the modal right below the button */
+  right: 0; /* Align the modal to the right side of the button */
+  z-index: 1000; /* Ensure it's on top */
+  }
+  
+  .modalContent {
+    background-color: white;
+    padding: 20px;
+    border-radius: 4px;
+    z-index: 1001; /* Ensuring content is also above other elements */
+  }
+  

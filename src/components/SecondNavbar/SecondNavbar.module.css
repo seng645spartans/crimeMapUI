@@ -3,13 +3,13 @@
     color: black;
     padding: 8px;
     display: flex;
-    justify-content: space-between;
+    justify-content: right;
     align-items: center;
   }
   
   .leftSection {
     display: flex;
-    align-items: center;
+    align-items: justify;
   }
   
   .dropdown select {
@@ -80,5 +80,10 @@
   
   .dateRange {
     margin-right: 10px;
+  }
+
+  .buttonModalContainer {
+    position: relative; /* This is necessary for absolute positioning of the modal */
+    display: inline-block; /* Align the container as an inline element */
   }
   
