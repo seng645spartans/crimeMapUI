@@ -1,0 +1,115 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.top-navbar {
+  background-color: black;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.get-alerts-button {
+  background-color: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.second-navbar {
+  background-color: white;
+  color: white;
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+}
+
+.dropdown {
+  margin-right: 10px;
+}
+
+.go-button {
+  background-color: #2ecc71; /* Green color for the GO button */
+  color: white;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.date-range {
+  margin-right: 10px;
+  color : black;
+}
+
+.right-section {
+  display: flex; /* Make the right section a flex container */
+  align-items: center;
+}
+
+.additional-button {
+  background-color: #e74c3c; /* Red color for additional buttons */
+  color: white;
+  padding: 10px;
+  margin-right: 5px; /* Adjust the margin as needed */
+  border: none;
+  cursor: pointer;
+}
+
+.signin-button {
+  background-color: #3498db; /* Blue color for the Sign In button */
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.content {
+  display: flex;
+  flex: 1;
+}
+
+.sidebar {
+  background-color: white;
+  color: white;
+  width: 40px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.filter {
+  color: red; /* Set the color to red */
+  margin-bottom: 10px; /* Adjust the margin as needed */
+  text-align: center;
+}
+
+.sidebarelements {
+  background-color: black;
+  margin-bottom: 120px; /* Adjust the margin as needed */
+  text-align: center;
+  cursor: pointer;
+}
+
+.sidebarbutton {
+  cursor : pointer;
+}
+
+.map {
+  flex: 1;
+  padding: 20px;
+  background-color: #ecf0f1;
+}
