@@ -1,5 +1,5 @@
-import TopNavbar from "./TopNavbar";
-import SecondNavbar from "./SecondNavbar";
+import TopNavbar from "./components/TopNavbar/TopNavbar";
+import SecondNavbar from "./components/SecondNavbar/SecondNavbar";
 import Map from "./Map";
 
 const App = () => {
@@ -11,5 +11,6 @@ const App = () => {
     </div>
   );
 };
+
 
 export default App;

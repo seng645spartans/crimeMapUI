@@ -1,0 +1,84 @@
+.secondNavbar {
+    background-color: white;
+    color: black;
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .leftSection {
+    display: flex;
+    align-items: center;
+  }
+  
+  .dropdown select {
+    width: 200px; /* Adjust the width as needed */
+    padding: 8px 10px;
+    padding-right: 30px; /* Add more padding on the right to avoid text overlapping with the arrow */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg width="12" height="12" viewBox="0 0 4 5" xmlns="http://www.w3.org/2000/svg"><path fill="%23333" d="M2 0L0 2h4zm0 5L0 3h4z"/></svg>'); /* SVG arrow icon */
+    background-repeat: no-repeat;
+    background-position: right 10px center; /* Position the arrow icon on the right */
+    background-size: 12px; /* Size of the arrow icon */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    -webkit-appearance: none; /* Remove default style in WebKit browsers */
+    -moz-appearance: none; /* Remove default style in Firefox */
+    appearance: none; /* Remove default style for other browsers */
+  }
+  
+  .dropdown select:focus {
+    border-color: #3498db;
+    outline: none;
+  }
+  
+  
+  .goButton {
+    background-color: #2ecc71;
+    color: white;
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+    margin-right: 20px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+  .dropdown {
+    margin-right: 20px; /* Adjust the right margin to increase space */
+  }
+  
+  
+  .goButton:hover {
+    background-color: #27ae60;
+  }
+  
+  .rightSection {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbarButton {
+    margin-left: 10px;
+    padding: 10px 15px;
+    font-size: 14px;
+    color: white;
+    background-color: #3498db;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .navbarButton:hover {
+    background-color: #2980b9;
+  }
+  
+  .dateRange {
+    margin-right: 10px;
+  }
+  
