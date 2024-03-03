@@ -7,7 +7,7 @@ const Modal = ({ onClose, children }) => {
       <div className={styles.modalBackground}>
         <div className={styles.modalContent}>
           {children}
-          <button onClick={onClose}>Close</button>
+          <button className ={styles.closeButton} onClick={onClose}>Close</button>
         </div>
       </div>
     );

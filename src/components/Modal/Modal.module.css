@@ -11,6 +11,20 @@
     background-color: white;
     padding: 20px;
     border-radius: 4px;
-    z-index: 1001; /* Ensuring content is also above other elements */
+    width: 30%; /* Adjust the width as needed */
+    min-width: 300px; /* Minimum width */
+    max-width: 600px; /* Maximum width */
+    height: auto; /* Height will adjust to content */
+    max-height: 80vh; /* Maximum height */
+    overflow-y: auto; /* Scroll if content is too long */
+    position: relative; /* For absolute positioning of the close button */
+    z-index: 1001;
+  }
+
+  .closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    /* Additional styles for the close button */
   }
   
