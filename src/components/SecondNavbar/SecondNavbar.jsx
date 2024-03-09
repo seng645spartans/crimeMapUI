@@ -4,6 +4,9 @@ import UniversityDropdown from './UniversityDropdown';
 import GoButton from './GoButton';
 import DateRangeDisplay from './Daterange';
 import ButtonWithModal from './ButtonWithModal';
+import CrimeSelectionComponent from '../CrimeSelection/CrimeSelectionComponent';
+import PoliceComponent from '../Police/PoliceComponent';
+import DateRangeComponent from '../DateRange/DateRangeComponent';
 
 const SecondNavbar = () => {
   const [activeModal, setActiveModal] = useState(null);
@@ -24,13 +27,13 @@ const SecondNavbar = () => {
       <GoButton />
       <DateRangeDisplay />
       <ButtonWithModal buttonText="What" onToggle={() => showModal('what')} showModal={activeModal === 'what'}>
-        What Content
+        <CrimeSelectionComponent></CrimeSelectionComponent>
       </ButtonWithModal>
-      <ButtonWithModal buttonText="Where" onToggle={() => showModal('where')} showModal={activeModal === 'where'}>
-        Where Content
+      <ButtonWithModal buttonText="Police" onToggle={() => showModal('police')} showModal={activeModal === 'police'}>
+        <PoliceComponent></PoliceComponent>
       </ButtonWithModal>
       <ButtonWithModal buttonText="When" onToggle={() => showModal('when')} showModal={activeModal === 'when'}>
-        When Content
+        <DateRangeComponent></DateRangeComponent>
       </ButtonWithModal>
     </div>
   );
