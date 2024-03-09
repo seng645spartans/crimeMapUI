@@ -16,6 +16,10 @@ const TopNavbar = () => {
     navigate('/Alert'); // Navigate to the CreateAlert component
   };
 
+  const handleGetHomeClick = () => {
+    navigate('/'); // Navigate to the CreateHome component
+  };
+
   const handleCopyLink = () => {
     navigator.clipboard.writeText(shareLink)
       .then(() => alert('Link copied to clipboard!')) // Show some alert or toast notification
@@ -24,7 +28,7 @@ const TopNavbar = () => {
 
   return (
     <div className={styles.topNavbar}>
-      <div className={styles.topTitle}>University Crime Map</div>
+      <button className={styles.homeButton} onClick={handleGetHomeClick}>University Crime Map</button>
       <div className={styles.rightSectionTop}>
       <button className={styles.button} onClick={handleShareClick}>Share</button>
         <button className={styles.button}>Graphs</button>
