@@ -7,6 +7,7 @@ import ButtonWithModal from './ButtonWithModal';
 import CrimeSelectionComponent from '../CrimeSelection/CrimeSelectionComponent';
 import PoliceComponent from '../Police/PoliceComponent';
 import DateRangeComponent from '../DateRange/DateRangeComponent';
+import { useNavigate } from 'react-router-dom';
 
 const SecondNavbar = () => {
   const [activeModal, setActiveModal] = useState(null);
@@ -20,11 +21,24 @@ const SecondNavbar = () => {
       setActiveModal(modalName);
     }
   };
+  
+  const [university, setUniversity] = useState('');
+  const navigate = useNavigate(); // Initialize the navigate function
+
+  const handleUniversityChange = (event) => {
+    setUniversity(event.target.value);
+  };
+
+  const handleGoClick = () => {
+    if (university) {
+      navigate(`/Dashboard/${university}`); // Navigate to the dashboard with the selected university
+    }
+  };
 
   return (
     <div className={styles.secondNavbar}>
-      <UniversityDropdown />
-      <GoButton />
+      <UniversityDropdown value={university} onChange={handleUniversityChange} />
+      <GoButton onClick={handleGoClick} />
       <DateRangeDisplay />
       <ButtonWithModal buttonText="What" onToggle={() => showModal('what')} showModal={activeModal === 'what'}>
         <CrimeSelectionComponent></CrimeSelectionComponent>

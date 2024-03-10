@@ -16,15 +16,12 @@ const Header = () => {
       const handleGetHomeClick = () => {
         navigate('/'); // Navigate to the CreateHome component
       };
-      const handleGetMapClick = () => {
-        navigate('/Map'); // Navigate to the CreateHome component
-      };
+     
   return (
     <header>
       <div className={styles.topNavbar}>
       <button className={styles.homeButton} onClick={handleGetHomeClick}>University Crime Map</button>
       <div className={styles.rightSectionTop}>
-      <button className={styles.button} onClick={handleGetMapClick}>Map</button>
       <button className={styles.button} onClick={handleGetAboutClick}>About</button>
       <button className={styles.button} onClick={handleGetHelpClick} >Help</button>
       <button className={styles.button} onClick={handleGetFAQClick}>FAQs</button>
