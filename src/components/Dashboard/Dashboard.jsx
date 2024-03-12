@@ -21,10 +21,10 @@ export const Dashboard = () => {
   ];
   const umcpLocations = [
     { lat: 38.986705, lng: -76.942715 , address: "Address1", crimeType: "assault", range: "yesterday" },
-    { lat: 39.257091, lng: -76.714769, address: "Address2", crimeType: "vandalism", range: "last 3 days" },
-    { lat: 39.254140, lng: -76.715148, address: "Address3", crimeType: "theft", range: "last 7 days" },
-    { lat: 39.258991, lng: -76.709861 , address: "Address4", crimeType: "drugAlcohol", range: "last 30 days" },
-    { lat: 39.254318, lng: -76.707367, address: "Address5", crimeType: "motortheft", range: "last 90 days" },
+    { lat: 38.987091, lng: -76.944769, address: "Address2", crimeType: "vandalism", range: "last 3 days" },
+    { lat: 38.984140, lng: -76.945148, address: "Address3", crimeType: "theft", range: "last 7 days" },
+    { lat: 38.988991, lng: -76.949861 , address: "Address4", crimeType: "drugAlcohol", range: "last 30 days" },
+    { lat: 38.984318, lng: -76.947367, address: "Address5", crimeType: "motortheft", range: "last 90 days" },
   ];
 
   const locations = university === 'UMBC' ? umbcLocations : umcpLocations;

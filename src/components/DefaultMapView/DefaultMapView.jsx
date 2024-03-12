@@ -6,7 +6,11 @@ export const DefaultMapView = ({ University, markers }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [infoWindowData, setInfoWindowData] = useState();
 
-  const center = useMemo(() => ({ lat: 39.2554, lng: -76.7107 }), []);
+  const centerUMBC = useMemo(() => ({ lat: 39.2554, lng: -76.7107 }), []);
+
+  const centerUMCP = useMemo(() => ({ lat: 38.986705, lng: -76.942715 }), []);
+
+  const center = University === 'UMBC' ? centerUMBC : centerUMCP;
 
   const handleMarkerClick = (id, address) => {
     setInfoWindowData({ id, address });
