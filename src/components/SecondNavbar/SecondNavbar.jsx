@@ -9,7 +9,7 @@ import PoliceComponent from '../Police/PoliceComponent';
 import DateRangeComponent from '../DateRange/DateRangeComponent';
 import { useNavigate } from 'react-router-dom';
 
-const SecondNavbar = () => {
+const SecondNavbar = ({ onCrimeTypeChange, onDateRangeChange }) => {
   const [activeModal, setActiveModal] = useState(null);
 
   const showModal = (modalName) => {
@@ -41,13 +41,13 @@ const SecondNavbar = () => {
       <GoButton onClick={handleGoClick} />
       <DateRangeDisplay />
       <ButtonWithModal buttonText="What" onToggle={() => showModal('what')} showModal={activeModal === 'what'}>
-        <CrimeSelectionComponent></CrimeSelectionComponent>
+        <CrimeSelectionComponent onCrimeSelectionChange={onCrimeTypeChange} />
       </ButtonWithModal>
       <ButtonWithModal buttonText="Police" onToggle={() => showModal('police')} showModal={activeModal === 'police'}>
         <PoliceComponent></PoliceComponent>
       </ButtonWithModal>
       <ButtonWithModal buttonText="When" onToggle={() => showModal('when')} showModal={activeModal === 'when'}>
-        <DateRangeComponent></DateRangeComponent>
+        <DateRangeComponent onDateRangeChange={onDateRangeChange} />
       </ButtonWithModal>
     </div>
   );
