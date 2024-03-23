@@ -17,6 +17,7 @@ const GoogleLoginCustom = () => {
           onError={() => {
             console.log("Login Failed");
           }}
+          useOneTap
         />
       </GoogleOAuthProvider>
     );

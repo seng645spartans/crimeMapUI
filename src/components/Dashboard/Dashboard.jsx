@@ -1,41 +1,101 @@
+import React, { useEffect, useState, useMemo } from "react";
+import { useParams } from "react-router-dom";
 import DefaultMapView from "../DefaultMapView";
 import { MapSection } from "./Dashboard.styled";
 import TopNavbar from "../TopNavbar/TopNavbar";
 import SecondNavbar from "../SecondNavbar/SecondNavbar";
-import { useParams } from 'react-router-dom';
-import { useState, useMemo } from 'react';
 
 export const Dashboard = () => {
-  const initialCrimes = new Set(['assault', 'vandalism', 'theft', 'drugAlcohol', 'motortheft']);
+  const initialCrimes = new Set([
+    "assault",
+    "vandalism",
+    "theft",
+    "drugAlcohol",
+    "motortheft",
+  ]);
   const { university } = useParams();
+  //Mocking the data to be displayed on the map
+  const [data, setData] = useState([
+    {
+      lat: 39.25526,
+      lng: -76.710306,
+      address: "Address1",
+      crimeType: "assault",
+      range: "yesterday",
+    },
+    {
+      lat: 39.257091,
+      lng: -76.714769,
+      address: "Address2",
+      crimeType: "vandalism",
+      range: "last 3 days",
+    },
+    {
+      lat: 39.25414,
+      lng: -76.715148,
+      address: "Address3",
+      crimeType: "theft",
+      range: "last 7 days",
+    },
+    {
+      lat: 39.258991,
+      lng: -76.709861,
+      address: "Address4",
+      crimeType: "drugAlcohol",
+      range: "last 30 days",
+    },
+    {
+      lat: 39.254318,
+      lng: -76.707367,
+      address: "Address5",
+      crimeType: "motortheft",
+      range: "last 90 days",
+    },
+  ]);
   const [selectedCrimes, setSelectedCrimes] = useState(initialCrimes);
-  const [selectionMade, setSelectionMade] = useState(false);  // New state to track if any selection has been made
-  const [dateRange, setDateRange] = useState('');
+  const [selectionMade, setSelectionMade] = useState(false);
+  const [dateRange, setDateRange] = useState("");
+  /*
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(`http://localhost:8080/getCrimeData/${university}`);
+      if (response.ok) {
+        const jsonData = await response.json();
+        const transformedData = jsonData.map(item => ({
+          lat: item.latitude,
+          lng: item.longitude,
+          address: item.location,
+          crimeType: Array.from(initialCrimes)[Math.floor(Math.random() * initialCrimes.size)], // Assign a random crime type from initialCrimes
+          range: convertTimestampToRange(item.dateOccurred), // This function needs to be implemented
+        }));
+        setData(transformedData);
+      }
+    };
 
-  const umbcLocations = [ 
-    { lat: 39.255260, lng: -76.710306 , address: "Address1", crimeType: "assault", range: "yesterday" },
-    { lat: 39.257091, lng: -76.714769, address: "Address2", crimeType: "vandalism", range: "last 3 days" },
-    { lat: 39.254140, lng: -76.715148, address: "Address3", crimeType: "theft", range: "last 7 days" },
-    { lat: 39.258991, lng: -76.709861 , address: "Address4", crimeType: "drugAlcohol", range: "last 30 days" },
-    { lat: 39.254318, lng: -76.707367, address: "Address5", crimeType: "motortheft", range: "last 90 days" },
-  ];
-  const umcpLocations = [
-    { lat: 38.986705, lng: -76.942715 , address: "Address1", crimeType: "assault", range: "yesterday" },
-    { lat: 38.987091, lng: -76.944769, address: "Address2", crimeType: "vandalism", range: "last 3 days" },
-    { lat: 38.984140, lng: -76.945148, address: "Address3", crimeType: "theft", range: "last 7 days" },
-    { lat: 38.988991, lng: -76.949861 , address: "Address4", crimeType: "drugAlcohol", range: "last 30 days" },
-    { lat: 38.984318, lng: -76.947367, address: "Address5", crimeType: "motortheft", range: "last 90 days" },
-  ];
+    fetchData();
+  }, [university]);*/
 
-  const locations = university === 'UMBC' ? umbcLocations : umcpLocations;
+  // Convert timestamp to range (this function needs to be defined based on your requirements)
+  const convertTimestampToRange = (timestamp) => {
+    // Example implementation (adjust according to your needs)
+    const diffInDays = (new Date() - new Date(timestamp)) / (1000 * 3600 * 24);
+    if (diffInDays < 1) return "yesterday";
+    if (diffInDays < 3) return "last 3 days";
+    if (diffInDays < 7) return "last 7 days";
+    if (diffInDays < 30) return "last 30 days";
+    return "last 90 days";
+  };
 
   const filteredMarkers = useMemo(() => {
-    return locations.filter(location => {
-      const crimeMatch = selectionMade ? selectedCrimes.has(location.crimeType) : true;
-      const dateMatch = !dateRange || location.range.trim() === dateRange.trim();
+    return data.filter((location) => {
+      const crimeMatch = selectionMade
+        ? selectedCrimes.has(location.crimeType)
+        : true;
+      const dateMatch =
+        !dateRange || location.range.trim() === dateRange.trim();
       return crimeMatch && dateMatch;
     });
-  }, [locations, selectedCrimes, dateRange, selectionMade]);
+  }, [data, selectedCrimes, dateRange, selectionMade]);
 
   const onCrimeTypeChange = (crimesObject) => {
     const selected = new Set();
@@ -43,13 +103,13 @@ export const Dashboard = () => {
       if (isSelected) selected.add(crime);
     }
     setSelectedCrimes(selected);
-    setSelectionMade(true);  // Indicate that a selection has been made
+    setSelectionMade(true);
   };
 
   return (
     <div>
       <TopNavbar />
-      <SecondNavbar 
+      <SecondNavbar
         onCrimeTypeChange={onCrimeTypeChange}
         onDateRangeChange={setDateRange}
       />
