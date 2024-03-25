@@ -1,0 +1,59 @@
+.createAlertContainer {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+    margin: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .createAlertContainer h1 {
+    color: #333;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .createAlertContainer form {
+    display: grid;
+    grid-gap: 10px;
+    padding: 20px;
+  }
+  
+  .createAlertContainer label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+  }
+  
+  .createAlertContainer select,
+  .createAlertContainer input[type="email"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .createAlertContainer button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .createAlertContainer .submitBtn {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .createAlertContainer .cancelBtn {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .createAlertContainer button:hover {
+    opacity: 0.9;
+  }
+  

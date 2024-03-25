@@ -1,0 +1,49 @@
+/* CrimeDetails.module.css */
+.detailsContainer {
+    background-color: #ffffff; /* White background for content */
+    padding: 30px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin: 20px auto;
+    max-width: 800px;
+    font-family: 'Arial', sans-serif; /* Change as per your font choice */
+  }
+  
+  .detailsContainer h1 {
+    font-size: 26px;
+    color: #333; /* Dark text for title */
+    margin-bottom: 16px;
+  }
+  
+  .detailsContainer p {
+    font-size: 18px;
+    color: #666; /* Lighter text for content */
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+  
+  .detailsContainer .googleMapsButton {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #e0e0e0; /* Light grey background */
+    color: #333; /* Dark text for button */
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .detailsContainer .googleMapsButton:hover {
+    background-color: #d4d4d4; /* Darker grey on hover */
+  }
+  
+  /* Add responsiveness if needed */
+  @media (max-width: 768px) {
+    .detailsContainer {
+      width: 90%;
+      padding: 20px;
+    }
+  }
+  

@@ -66,4 +66,43 @@
   .signInButton:hover {
     background-color: #1e0867;
   }
+  .modalContent {
+    text-align: center;
+    color: #4A4A4A; /* Dark grey color for the text for better readability */
+  }
+  
+  .modalContent h2 {
+    margin-bottom: 20px;
+    font-size: 24px; /* A larger font size for the title */
+    color: #333333; /* Darker color for the title for emphasis */
+    font-weight: 600; /* Slightly bolder font-weight */
+  }
+  
+  .modalContent input[type="text"] {
+    width: 80%; /* Responsive width */
+    padding: 10px;
+    margin-bottom: 20px; /* Space below the input field */
+    border: 1px solid #DADADA; /* Light grey border */
+    border-radius: 5px; /* Rounded borders for the input field */
+    box-sizing: border-box; /* Box sizing to include padding and border in width */
+    font-size: 16px; /* A legible font size for the input text */
+    color: #333333;
+    text-align: center;
+  }
+  
+  .modalContent button {
+    padding: 10px 20px;
+    background-color: #0056b3; /* A pleasant blue for the button */
+    color: #ffffff; /* White text for contrast */
+    border: none; /* No border for a cleaner look */
+    border-radius: 5px; /* Rounded borders for the button */
+    font-size: 16px; /* Matching font size for consistency */
+    cursor: pointer; /* Cursor to indicate the button is clickable */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
+    transition: background-color 0.2s; /* Transition for a hover effect */
+  }
+  
+  .modalContent button:hover {
+    background-color: #003d82; /* Darken button on hover for interaction feedback */
+  }
   
