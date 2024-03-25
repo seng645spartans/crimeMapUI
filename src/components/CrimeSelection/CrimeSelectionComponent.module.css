@@ -1,0 +1,47 @@
+/* CrimeSelectionComponent.module.css */
+.container {
+  background-color: #f2f2f2; /* Change as needed to match your theme */
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.buttonGroup {
+  margin-bottom: 20px;
+}
+
+.button {
+  background-color: #444; /* Dark grey background */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-right: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  /* Add more styles as needed */
+}
+
+.button:hover {
+  background-color: #555; /* Slightly lighter on hover */
+}
+
+.crimeItem {
+  display: flex;
+  align-items: center;
+  background-color: #fff; /* White background for items */
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.crimeIcon {
+  margin-right: 10px;
+  /* Style your icons based on the icons you have */
+}
+
+.crimeLabel {
+  flex-grow: 1;
+}
+
+.checkbox {
+  /* Style your checkbox if needed */
+}

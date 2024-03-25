@@ -7,10 +7,9 @@ const Modal = ({ onClose, children }) => {
       <div className={styles.modalBackground}>
         <div className={styles.modalContent}>
           {children}
-          <button className ={styles.closeButton} onClick={onClose}>Close</button>
         </div>
       </div>
     );
   };
-  
+  //<button className ={styles.closeButton} onClick={onClose}>Close</button> add it to the div if you want to close
 export default Modal;

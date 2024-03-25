@@ -1,0 +1,25 @@
+.dateRangeContainer {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .dateRangeContainer h2 {
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .dateRangeContainer div {
+    margin-bottom: 10px;
+  }
+  
+  .dateRangeContainer label {
+    margin-left: 5px;
+  }
+  
+  .dateRangeContainer input[type="radio"] {
+    accent-color: #007bff;
+  }
+  

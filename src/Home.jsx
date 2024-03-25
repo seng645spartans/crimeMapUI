@@ -4,6 +4,7 @@ import UniversityDropdown from './components/SecondNavbar/UniversityDropdown';
 import GoButton from './components/SecondNavbar/GoButton';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './Home.css';
 
 const Home = () => {
   const [university, setUniversity] = useState('');
@@ -19,16 +20,27 @@ const Home = () => {
     }
   };
   return (
-    <div className="home">
-      <Header></Header>
-      <h1>Welcome to Our Application!</h1>
-      <p>This is the home page. Click on Map button on the header to View the dashboard</p>
-      <p>90 percent of features are inter active only the front end part still back end integartion is pending</p>
-      <p>Still need to add CSS for every page except the Map page</p> 
-      <p>Then next steps to add is sign in functionality and dashboard for Admin user</p>
+    <div>
+    <Header></Header>
+    <div className="home-background"></div> {/* Separate background element */}
+    <div className="home-content"> {/* Content wrapper */}
+      <h1>Find Crime in Your University</h1>
       <UniversityDropdown value={university} onChange={handleUniversityChange} />
       <GoButton onClick={handleGoClick} />
     </div>
+    <div className="info-section">
+      <h1>What is Crime Mapping?</h1>
+      <p>Small info about crime mapping...</p>
+    </div>
+    <div className="info-section">
+      <h1>Where Do We Get the Data?</h1>
+      <p>Information about the data sources...</p>
+    </div>
+    <div className="info-section">
+      <h1>Basic Features</h1>
+      <p>Details about the basic features...</p>
+    </div>
+  </div>
   );
 };
 

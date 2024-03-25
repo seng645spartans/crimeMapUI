@@ -1,0 +1,42 @@
+.policeContainer {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .policeContainer h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+  
+  .policeContainer ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .policeContainer li {
+    background-color: #fff;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .policeContainer a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .policeContainer a:hover {
+    text-decoration: underline;
+  }
+  
+  .policeContainer p {
+    color: #666;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from './CrimeSelectionComponent.module.css';
 
 const CrimeSelectionComponent = ({ onCrimeSelectionChange }) => {
   const [selectedCrimes, setSelectedCrimes] = useState({
@@ -37,19 +38,25 @@ const CrimeSelectionComponent = ({ onCrimeSelectionChange }) => {
   };
 
   return (
-    <div>
-      <button onClick={selectAllCrimes}>Select all</button>
-      <button onClick={deselectAllCrimes}>Deselect all</button>
+    <div className={styles.container}>
+      <div className={styles.buttonGroup}>
+        <button className={styles.button} onClick={selectAllCrimes}>Select all</button>
+        <button className={styles.button} onClick={deselectAllCrimes}>Deselect all</button>
+      </div>
       {Object.keys(selectedCrimes).map((crime) => (
-        <div key={crime}>
+        <div className={styles.crimeItem} key={crime}>
+          <div className={styles.crimeIcon}>
+            {/* Insert the icon component here */}
+          </div>
           <input
+            className={styles.checkbox}
             type="checkbox"
             id={crime}
             name={crime}
             checked={selectedCrimes[crime]}
             onChange={() => toggleCrimeSelection(crime)}
           />
-          <label htmlFor={crime}>{crime.charAt(0).toUpperCase() + crime.slice(1)}</label>
+          <label className={styles.crimeLabel} htmlFor={crime}>{crime.charAt(0).toUpperCase() + crime.slice(1)}</label>
         </div>
       ))}
     </div>

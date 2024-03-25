@@ -1,8 +1,9 @@
 import React from 'react';
+import styles from './PoliceComponent.module.css';
 
 const PoliceComponent = () => {
   return (
-    <div>
+    <div className={styles.policeContainer}>
       <h1>UMD Police Department</h1>
       <ul>
         <li>

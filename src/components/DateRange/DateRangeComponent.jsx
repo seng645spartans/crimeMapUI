@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styles from './DateRangeComponent.module.css';
 
 const DateRangeComponent = ({ onDateRangeChange }) => {
   const [selectedRange, setSelectedRange] = useState("last7days");
@@ -9,7 +10,7 @@ const DateRangeComponent = ({ onDateRangeChange }) => {
   };
 
   return (
-    <div>
+    <div className={styles.dateRangeContainer}>
       <h2>Date Range</h2>
       {[" yesterday", " last 3 days", " last 7 days", " last 30 days", " last 90 days"].map(range => (
         <div key={range}>

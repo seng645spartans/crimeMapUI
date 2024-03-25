@@ -1,0 +1,48 @@
+.home-background {
+    text-align: center;
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px);
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    z-index: -1; /* Ensure the background is behind other content */
+  }
+  
+  .home-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    height: 100vh;
+    overflow: auto;
+    margin-top: -90px; /* Adjust this value to move the content higher */
+  }
+  
+  .home h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .info-section {
+    background-color: #fff; /* Or any color you prefer */
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .info-section h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .info-section p {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
