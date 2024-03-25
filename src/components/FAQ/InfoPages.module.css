@@ -1,0 +1,30 @@
+.infoContainer {
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.infoContainer h1 {
+  color: #333;
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.infoContainer p, .infoContainer li {
+  color: #666;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.faqList {
+  list-style: none;
+  padding: 0;
+}
+
+.faqList li strong {
+  color: #333;
+}
+
+.faqList li p {
+  margin-top: 5px;
+}
