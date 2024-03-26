@@ -51,6 +51,41 @@ export const Dashboard = () => {
       crimeType: "motortheft",
       range: "last 90 days",
     },
+    {
+      lat: 38.987001,
+      lng: -76.943230,
+      address: "Address1",
+      crimeType: "assault",
+      range: "yesterday",
+    },
+    {
+      lat: 38.988385, 
+      lng: -76.940247,
+      address: "Address2",
+      crimeType: "vandalism",
+      range: "last 3 days",
+    },
+    {
+      lat: 38.987836,
+      lng: -76.947135,
+      address: "Address3",
+      crimeType: "theft",
+      range: "last 7 days",
+    },
+    {
+      lat: 38.985783,
+      lng: -76.939668,
+      address: "Address4",
+      crimeType: "drugAlcohol",
+      range: "last 30 days",
+    },
+    {
+      lat: 38.982814,
+      lng: -76.937266,
+      address: "Address5",
+      crimeType: "motortheft",
+      range: "last 90 days",
+    },
   ]);
   const [selectedCrimes, setSelectedCrimes] = useState(initialCrimes);
   const [selectionMade, setSelectionMade] = useState(false);
