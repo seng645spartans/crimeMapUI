@@ -7,6 +7,8 @@ import Help from './components/Help/Help';
 import FAQ from './components/FAQ/FAQ';
 import Map from './Map';
 import CrimeDetails from './components/CrimeDetails/CrimeDetails';
+import AdminDashboard from './components/AdminDashboard/AdminDashboard';
+import Graphs from './components/Graphs/Graphs';
 
 const MapApp = () => {
   return (
@@ -20,6 +22,8 @@ const MapApp = () => {
           <Route path="/Help" element={<Help />} />
           <Route path="/FAQ" element={<FAQ />} />
           <Route path="/CrimeDetails" element={<CrimeDetails />} />
+          <Route path="/Admin" element={<AdminDashboard />} />
+          <Route path="/Graph" element={<Graphs />} />
         </Routes>
       </div>
     </Router>

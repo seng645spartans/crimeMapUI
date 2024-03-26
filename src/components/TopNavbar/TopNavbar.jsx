@@ -20,6 +20,14 @@ const TopNavbar = () => {
     navigate("/"); // Navigate to the CreateHome component
   };
 
+  const handleAdminButtonClick = () => {
+    navigate("/Admin"); // Navigate to the Admin component
+  };
+
+  const handleGetGraphClick = () => {
+    navigate("/Graph"); // Navigate to the Admin component
+  };
+
   const handleCopyLink = () => {
     navigator.clipboard
       .writeText(shareLink)
@@ -33,10 +41,13 @@ const TopNavbar = () => {
         University Crime Map
       </button>
       <div className={styles.rightSectionTop}>
+        <button className={styles.button} onClick={handleAdminButtonClick}>
+          Admin
+        </button>
         <button className={styles.button} onClick={handleShareClick}>
           Share
         </button>
-        <button className={styles.button}>Graphs</button>
+        <button className={styles.button} onClick={handleGetGraphClick}>Graphs</button>
         <button
           className={`${styles.button} ${styles.alertButton}`}
           onClick={handleGetAlertsClick}
