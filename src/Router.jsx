@@ -21,7 +21,7 @@ const MapApp = () => {
           <Route path="/About" element={<About />} />
           <Route path="/Help" element={<Help />} />
           <Route path="/FAQ" element={<FAQ />} />
-          <Route path="/CrimeDetails" element={<CrimeDetails />} />
+          <Route path="/CrimeDetails/:caseId" element={<CrimeDetails/>} />
           <Route path="/Admin" element={<AdminDashboard />} />
           <Route path="/Graph" element={<Graphs />} />
         </Routes>

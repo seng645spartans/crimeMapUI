@@ -16,81 +16,12 @@ export const Dashboard = () => {
   const { university } = useParams();
   //Mocking the data to be displayed on the map
   const [data, setData] = useState([
-    {
-      lat: 39.25526,
-      lng: -76.710306,
-      address: "Address1",
-      crimeType: "assault",
-      range: "yesterday",
-    },
-    {
-      lat: 39.257091,
-      lng: -76.714769,
-      address: "Address2",
-      crimeType: "vandalism",
-      range: "last 3 days",
-    },
-    {
-      lat: 39.25414,
-      lng: -76.715148,
-      address: "Address3",
-      crimeType: "theft",
-      range: "last 7 days",
-    },
-    {
-      lat: 39.258991,
-      lng: -76.709861,
-      address: "Address4",
-      crimeType: "drugAlcohol",
-      range: "last 30 days",
-    },
-    {
-      lat: 39.254318,
-      lng: -76.707367,
-      address: "Address5",
-      crimeType: "motortheft",
-      range: "last 90 days",
-    },
-    {
-      lat: 38.987001,
-      lng: -76.943230,
-      address: "Address1",
-      crimeType: "assault",
-      range: "yesterday",
-    },
-    {
-      lat: 38.988385, 
-      lng: -76.940247,
-      address: "Address2",
-      crimeType: "vandalism",
-      range: "last 3 days",
-    },
-    {
-      lat: 38.987836,
-      lng: -76.947135,
-      address: "Address3",
-      crimeType: "theft",
-      range: "last 7 days",
-    },
-    {
-      lat: 38.985783,
-      lng: -76.939668,
-      address: "Address4",
-      crimeType: "drugAlcohol",
-      range: "last 30 days",
-    },
-    {
-      lat: 38.982814,
-      lng: -76.937266,
-      address: "Address5",
-      crimeType: "motortheft",
-      range: "last 90 days",
-    },
+    
   ]);
   const [selectedCrimes, setSelectedCrimes] = useState(initialCrimes);
   const [selectionMade, setSelectionMade] = useState(false);
   const [dateRange, setDateRange] = useState("");
-  /*
+  
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(`http://localhost:8080/getCrimeData/${university}`);
@@ -102,13 +33,14 @@ export const Dashboard = () => {
           address: item.location,
           crimeType: Array.from(initialCrimes)[Math.floor(Math.random() * initialCrimes.size)], // Assign a random crime type from initialCrimes
           range: convertTimestampToRange(item.dateOccurred), // This function needs to be implemented
+          caseId: item.caseId,
         }));
         setData(transformedData);
       }
     };
 
     fetchData();
-  }, [university]);*/
+  }, [university]);
 
   // Convert timestamp to range (this function needs to be defined based on your requirements)
   const convertTimestampToRange = (timestamp) => {
