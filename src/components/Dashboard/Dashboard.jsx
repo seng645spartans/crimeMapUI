@@ -24,7 +24,7 @@ export const Dashboard = () => {
   
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`http://localhost:8080/getCrimeData/${university}`);
+      const response = await fetch(`http://44.201.137.194/getCrimeData/${university}`);
       if (response.ok) {
         const jsonData = await response.json();
         const transformedData = jsonData.map(item => ({
