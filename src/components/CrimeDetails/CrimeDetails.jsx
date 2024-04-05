@@ -9,7 +9,7 @@ const CrimeDetails = () => {
 
   useEffect(() => {
     const fetchCrimeDetails = async () => {
-      const response = await fetch(`http://44.201.137.194/getCrimeData/Info/${caseId}`);
+      const response = await fetch(`https://seng645backend.me/getCrimeData/Info/${caseId}`);
       if (response.ok) {
         const jsonData = await response.json();
         setCrimeDetails(jsonData);

@@ -38,7 +38,7 @@ const CreateAlert = ({ onCancel }) => {
       crimes: { [crime]: true },
     };
 
-    fetch('http://44.201.137.194/Alerts/new', {
+    fetch('https://seng645backend.me/Alerts/new', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(alertRequest),
