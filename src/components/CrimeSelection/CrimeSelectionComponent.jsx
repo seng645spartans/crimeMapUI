@@ -1,14 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './CrimeSelectionComponent.module.css';
 
 const CrimeSelectionComponent = ({ onCrimeSelectionChange }) => {
-  const [selectedCrimes, setSelectedCrimes] = useState({
-    assault: true,
-    vandalism: true,
-    theft: true,
-    drugAlcohol: true,
-    motortheft: true,
-  });
+  const [availableCrimes, setAvailableCrimes] = useState([]);
+  const [selectedCrimes, setSelectedCrimes] = useState({});
+
+  useEffect(() => {
+    const fetchCrimeTypes = async () => {
+      const response = await fetch('http://localhost:8080/getCrimeData/crimeTypes');
+      if (response.ok) {
+        const crimes = await response.json();
+        const crimeSelections = crimes.reduce((acc, crime) => {
+          acc[crime.toLowerCase()] = true; // Initialize all crimes as selected
+          return acc;
+        }, {});
+        setAvailableCrimes(crimes.map(crime => crime.toLowerCase()));
+        setSelectedCrimes(crimeSelections);
+      }
+    };
+
+    fetchCrimeTypes();
+  }, []);
 
   const toggleCrimeSelection = (crime) => {
     const newSelections = {
@@ -20,7 +32,7 @@ const CrimeSelectionComponent = ({ onCrimeSelectionChange }) => {
   };
 
   const selectAllCrimes = () => {
-    const allSelected = Object.keys(selectedCrimes).reduce((acc, crime) => {
+    const allSelected = availableCrimes.reduce((acc, crime) => {
       acc[crime] = true;
       return acc;
     }, {});
@@ -29,7 +41,7 @@ const CrimeSelectionComponent = ({ onCrimeSelectionChange }) => {
   };
 
   const deselectAllCrimes = () => {
-    const allDeselected = Object.keys(selectedCrimes).reduce((acc, crime) => {
+    const allDeselected = availableCrimes.reduce((acc, crime) => {
       acc[crime] = false;
       return acc;
     }, {});
@@ -43,7 +55,7 @@ const CrimeSelectionComponent = ({ onCrimeSelectionChange }) => {
         <button className={styles.button} onClick={selectAllCrimes}>Select all</button>
         <button className={styles.button} onClick={deselectAllCrimes}>Deselect all</button>
       </div>
-      {Object.keys(selectedCrimes).map((crime) => (
+      {availableCrimes.map((crime) => (
         <div className={styles.crimeItem} key={crime}>
           <div className={styles.crimeIcon}>
             {/* Insert the icon component here */}

@@ -27,6 +27,7 @@ export const DefaultMapView = ({ University, markers }) => {
           {isOpen && infoWindowData?.caseId === marker.caseId && (
             <InfoWindow onCloseClick={() => setIsOpen(false)}>
               <div>
+                <h2>{infoWindowData.crimeType}</h2>
                 <h3>{infoWindowData.address}</h3>
                 <Link to={`/CrimeDetails/${infoWindowData.caseId}`}>View More Details</Link>
               </div>

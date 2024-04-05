@@ -8,11 +8,10 @@ const GoogleLoginCustom = () => {
         <GoogleOAuthProvider clientId="1082635464334-nknq7hmute21rql7j5dk26nl7sadf0hn.apps.googleusercontent.com">
         <GoogleLogin
           onSuccess={(credentialResponse) => {
-            console.log(credentialResponse.credential);
             const jwt = credentialResponse.credential;
             const decoded = jwtDecode(jwt);
             const email = decoded.email;
-            console.log(email);
+            sessionStorage.setItem('userEmail', email);
           }}
           onError={() => {
             console.log("Login Failed");

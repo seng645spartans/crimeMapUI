@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './CreateAlert.module.css';
 import Header from '../Header/Header';
 
@@ -6,17 +6,37 @@ const CreateAlert = ({ onCancel }) => {
   const [university, setUniversity] = useState('');
   const [crime, setCrime] = useState('');
   const [email, setEmail] = useState('');
+  const [crimes, setCrimes] = useState([]);
   const [errors, setErrors] = useState({});
   const [message, setMessage] = useState('');
 
-  const crimes = [
-    "Theft", "Vehicle theft", "Mal Destruction", "Assault", "AGG/Assault",
-    "Burglary", "Vandalism", "Dating violence", "Harassment", "Stalking",
-    "Fondling", "Rape", "DUI", "Alcohol violation", "Disorderly", "Interference", "Other"
-  ];
+  useEffect(() => {
+    // Fetch crime types from the backend when the component mounts
+    const fetchCrimes = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/getCrimeData/crimeTypes');
+        if (response.ok) {
+          const crimeTypes = await response.json();
+          setCrimes(crimeTypes);
+        } else {
+          throw new Error('Failed to fetch crime types');
+        }
+      } catch (error) {
+        setMessage(`Error: ${error.message}`);
+      }
+    };
+
+    fetchCrimes();
+
+    // Attempt to retrieve email from sessionStorage
+    const storedEmail = sessionStorage.getItem('userEmail');
+    if (storedEmail) {
+      setEmail(storedEmail);
+    }
+  }, []);
 
   const validateForm = () => {
-    const newErrors = {};
+    let newErrors = {};
     if (!university) newErrors.university = 'University is required';
     if (!crime) newErrors.crime = 'Crime is required';
     if (!email) {
@@ -30,6 +50,13 @@ const CreateAlert = ({ onCancel }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    // Check if the email is not present in session storage
+    if (!sessionStorage.getItem('userEmail')) {
+      setMessage('Please log in to submit an alert.');
+      return;
+    }
+
     if (!validateForm()) return;
 
     const alertRequest = {
@@ -38,23 +65,20 @@ const CreateAlert = ({ onCancel }) => {
       crimes: { [crime]: true },
     };
 
-    fetch('https://seng645backend.me/Alerts/new', {
+    fetch('http://localhost:8080/Alerts/new', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(alertRequest),
     })
     .then(response => {
       if (response.ok) {
-        return response.text();
+        setMessage('Success: Alert request processed successfully.');
+        setUniversity('');
+        setCrime('');
+        setEmail('');
+      } else {
+        throw new Error('An error occurred while submitting the alert.');
       }
-      throw new Error('Network response was not ok.');
-    })
-    .then(data => {
-      setMessage('Success: Alert request processed successfully');
-      // Clear form fields
-      setUniversity('');
-      setCrime('');
-      setEmail('');
     })
     .catch((error) => {
       setMessage(`Error: ${error.message}`);
@@ -62,7 +86,7 @@ const CreateAlert = ({ onCancel }) => {
   };
 
   return (
-    <div> 
+    <div>
       <Header />
       <div className={styles.createAlertContainer}>
         <h1>Create Alert</h1>
@@ -97,7 +121,7 @@ const CreateAlert = ({ onCancel }) => {
           <button type="submit" className={styles.submitBtn}>GO</button>
           <button type="button" onClick={onCancel} className={styles.cancelBtn}>Cancel</button>
         </form>
-        {message && <p className={styles.message}>{message}</p>} {/* Display success or error message */}
+        {message && <p className={styles.message}>{message}</p>}
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Header.module.css';
 import { useNavigate } from 'react-router-dom';
+import GoogleLoginCustom from "../GoogleLogin/GoogleLogin";
 
 const Header = () => {
     const navigate = useNavigate();
@@ -25,6 +26,7 @@ const Header = () => {
       <button className={styles.button} onClick={handleGetAboutClick}>About</button>
       <button className={styles.button} onClick={handleGetHelpClick} >Help</button>
       <button className={styles.button} onClick={handleGetFAQClick}>FAQs</button>
+      <GoogleLoginCustom></GoogleLoginCustom>
       </div>
       </div>
     </header>
