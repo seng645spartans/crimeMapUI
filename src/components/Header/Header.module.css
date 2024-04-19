@@ -38,3 +38,7 @@
     transition: background-color 0.3s ease;
     z-index: 2;
   }
+
+  .myButton {
+    z-index: 2; /* Adjust this value based on your needs */
+  }

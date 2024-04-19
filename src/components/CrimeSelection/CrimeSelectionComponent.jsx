@@ -7,7 +7,7 @@ const CrimeSelectionComponent = ({ onCrimeSelectionChange }) => {
 
   useEffect(() => {
     const fetchCrimeTypes = async () => {
-      const response = await fetch('http://localhost:8080/getCrimeData/crimeTypes');
+      const response = await fetch('https://seng645backend.me/getCrimeData/crimeTypes');
       if (response.ok) {
         const crimes = await response.json();
         const crimeSelections = crimes.reduce((acc, crime) => {

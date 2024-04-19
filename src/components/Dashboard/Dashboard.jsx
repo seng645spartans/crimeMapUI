@@ -22,7 +22,7 @@ export const Dashboard = () => {
   // Fetch crime types from the backend
   useEffect(() => {
     const fetchCrimeTypes = async () => {
-      const response = await fetch('http://localhost:8080/getCrimeData/crimeTypes');
+      const response = await fetch('https://seng645backend.me/getCrimeData/crimeTypes');
       if (response.ok) {
         const types = await response.json();
         setCrimeTypes(new Set(types.map(type => type.toLowerCase())));
@@ -35,7 +35,7 @@ export const Dashboard = () => {
   // Fetch crime data for the university
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`http://localhost:8080/getCrimeData/${university}`);
+      const response = await fetch(`https://seng645backend.me/getCrimeData/${university}`);
       if (response.ok) {
         const jsonData = await response.json();
         const transformedData = jsonData.map(item => ({

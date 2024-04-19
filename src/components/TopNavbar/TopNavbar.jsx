@@ -1,73 +1,66 @@
 import React, { useState } from "react";
-import styles from "./TopNavbar.module.css";
-import PopupModal from "../PopUp/PopupModal";
 import { useNavigate } from "react-router-dom";
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 import GoogleLoginCustom from "../GoogleLogin/GoogleLogin";
+import PopupModal from "../PopUp/PopupModal";
 
 const TopNavbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [shareLink, setShareLink] = useState("https://www.example.com/map"); // Replace with your actual sharing link
+  const [shareLink, setShareLink] = useState("https://www.example.com/map");
   const navigate = useNavigate();
 
-  const handleShareClick = () => {
-    setIsModalOpen(true);
-  };
-  const handleGetAlertsClick = () => {
-    navigate("/Alert"); // Navigate to the CreateAlert component
-  };
-
-  const handleGetHomeClick = () => {
-    navigate("/"); // Navigate to the CreateHome component
-  };
-
-  const handleAdminButtonClick = () => {
-    navigate("/Admin"); // Navigate to the Admin component
-  };
-
-  const handleGetGraphClick = () => {
-    navigate("/Graph"); // Navigate to the Admin component
-  };
-
+  const handleShareClick = () => setIsModalOpen(true);
+  const handleGetAlertsClick = () => navigate("/Alert");
+  const handleGetHomeClick = () => navigate("/");
+  const handleAdminButtonClick = () => navigate("/Admin");
+  const handleGetGraphClick = () => navigate("/Graph");
   const handleCopyLink = () => {
     navigator.clipboard
       .writeText(shareLink)
-      .then(() => alert("Link copied to clipboard!")) // Show some alert or toast notification
+      .then(() => alert("Link copied to clipboard!"))
       .catch((err) => console.error("Could not copy link: ", err));
   };
 
   return (
-    <div className={styles.topNavbar}>
-      <button className={styles.homeButton} onClick={handleGetHomeClick}>
-        University Crime Map
-      </button>
-      <div className={styles.rightSectionTop}>
-        <button className={styles.button} onClick={handleAdminButtonClick}>
-          Admin
-        </button>
-        <button className={styles.button} onClick={handleShareClick}>
-          Share
-        </button>
-        <button className={styles.button} onClick={handleGetGraphClick}>Graphs</button>
-        <button
-          className={`${styles.button} ${styles.alertButton}`}
-          onClick={handleGetAlertsClick}
-        >
-          Get Alerts
-        </button>
-        <div className={styles.buttonSigned}>
-          <GoogleLoginCustom></GoogleLoginCustom>
-        </div>
-      </div>
-      {isModalOpen && (
-        <PopupModal onClose={() => setIsModalOpen(false)}>
-          <div className={styles.modalContent}>
-            <h2>Share this map</h2>
-            <input type="text" value={shareLink} readOnly />
-            <button onClick={handleCopyLink}>Copy Link</button>
-          </div>
-        </PopupModal>
-      )}
-    </div>
+    <AppBar position="static" sx={{ backgroundColor: 'black', padding: '3px', alignItems: 'center' }}>
+      <Toolbar sx={{ justifyContent: 'space-between', width: '100%' }}>
+        <Button sx={{ color: 'white', textTransform: 'none', paddingLeft: '2%' }} onClick={handleGetHomeClick}>
+          <Typography variant="h6">University Crime Map</Typography>
+        </Button>
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Button sx={{ backgroundColor: '#3498db', color: 'white', marginLeft: '10px', '&:hover': { backgroundColor: '#2980b9' } }} onClick={handleAdminButtonClick}>
+            Admin
+          </Button>
+          <Button sx={{ backgroundColor: '#3498db', color: 'white', marginLeft: '10px', '&:hover': { backgroundColor: '#2980b9' } }} onClick={handleShareClick}>
+            Share
+          </Button>
+          <Button sx={{ backgroundColor: '#3498db', color: 'white', marginLeft: '10px', '&:hover': { backgroundColor: '#2980b9' } }} onClick={handleGetGraphClick}>
+            Graphs
+          </Button>
+          <Button sx={{ backgroundColor: '#e74c3c', color: 'white', marginLeft: '10px', '&:hover': { backgroundColor: '#c0392b' } }} onClick={handleGetAlertsClick}>
+            Get Alerts
+          </Button>
+          <Box sx={{ marginLeft: '10px' }}>
+            <GoogleLoginCustom />
+          </Box>
+        </Box>
+        {isModalOpen && (
+          <PopupModal onClose={() => setIsModalOpen(false)}>
+            <Box sx={{ textAlign: 'center', color: '#4A4A4A', padding: '20px' }}>
+              <Typography variant="h6" sx={{ color: '#333', marginBottom: '20px', fontWeight: '600' }}>Share this map</Typography>
+              <input type="text" value={shareLink} readOnly style={{ width: '80%', padding: '10px', marginBottom: '20px', border: '1px solid #DADADA', borderRadius: '5px', fontSize: '16px', textAlign: 'center' }} />
+              <Button sx={{ backgroundColor: '#0056b3', color: 'white', padding: '10px 20px', '&:hover': { backgroundColor: '#003d82' } }} onClick={handleCopyLink}>
+                Copy Link
+              </Button>
+            </Box>
+          </PopupModal>
+        )}
+      </Toolbar>
+    </AppBar>
   );
 };
 

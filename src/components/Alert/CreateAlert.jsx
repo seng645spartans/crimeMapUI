@@ -14,7 +14,7 @@ const CreateAlert = ({ onCancel }) => {
     // Fetch crime types from the backend when the component mounts
     const fetchCrimes = async () => {
       try {
-        const response = await fetch('http://localhost:8080/getCrimeData/crimeTypes');
+        const response = await fetch('https://seng645backend.me/getCrimeData/crimeTypes');
         if (response.ok) {
           const crimeTypes = await response.json();
           setCrimes(crimeTypes);
@@ -65,7 +65,7 @@ const CreateAlert = ({ onCancel }) => {
       crimes: { [crime]: true },
     };
 
-    fetch('http://localhost:8080/Alerts/new', {
+    fetch('https://seng645backend.me/Alerts/new', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(alertRequest),
