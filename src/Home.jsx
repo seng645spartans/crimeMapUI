@@ -29,16 +29,20 @@ const Home = () => {
       <GoButton onClick={handleGoClick} />
     </div>
     <div className="info-section">
-      <h1>What is Crime Mapping?</h1>
-      <p>Small info about crime mapping...</p>
+      
+      <h1 c>What is Crime Mapping?</h1>
+      <p>Crime mapping is the process of using geographic data to represent and analyze crime statistically across different regions. 
+      This technique helps law enforcement agencies and the public to understand where crime is occurring, which in turn assists in preventing crime and making better-informed safety decisions</p>
     </div>
-    <div className="info-section">
+    <div className="info-section-2">
       <h1>Where Do We Get the Data?</h1>
-      <p>Information about the data sources...</p>
+      <p>Data for our crime mapping tool is meticulously sourced from law enforcement agencies' official records, including the Daily Crime Log and compliance with the Clery Act.
+       The Daily Crime Log is a record maintained by police departments that details all incidents and crimes reported to the department, providing timely and transparent information</p>
     </div>
     <div className="info-section">
       <h1>Basic Features</h1>
-      <p>Details about the basic features...</p>
+      <p>Our crime mapping tool offers several key features, including the ability to filter crime data by type, date, and location.
+       Users can also receive alerts for reported crimes in their selected regions. Interactive maps provide a visual overview of crime statistics, helping you stay informed about safety in your community..</p>
     </div>
   </div>
   );

@@ -1,67 +1,95 @@
-import React, { useState } from 'react';
-import styles from './AdminDashboard.module.css';
+import React, { useState, useEffect } from 'react';
+import styles from './AdminDashboard.module.css'; // Ensure this path matches your actual CSS file
 import Header from '../Header/Header';
 
 const AdminDashboard = () => {
-  const [selectedUniversities, setSelectedUniversities] = useState([]);
-  const [selectedCrimes, setSelectedCrimes] = useState([]);
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const universities = ["UMBC", "UMCP", "UMD"];
-  const crimes = ["Theft", "Assault", "Vandalism"];
+  useEffect(() => {
+    fetch(`https://seng645backend.me/getCrimeData/crimeTypesWithStatus`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        setData(data);
+        setIsLoading(false);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+        setError(error.message);
+        setIsLoading(false);
+      });
+  }, []);
 
-  const toggleSelection = (item, list, setList) => {
-    const currentIndex = list.indexOf(item);
-    const newChecked = [...list];
-
-    if (currentIndex === -1) {
-      newChecked.push(item);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    setList(newChecked);
+  const handleCheckboxChange = (id, isChecked) => {
+    const updatedData = data.map(item => {
+      if (item.id === id) {
+        return { ...item, isActive: isChecked };
+      }
+      return item;
+    });
+    setData(updatedData);
   };
 
+  const handleUpdate = () => {
+    fetch(`https://seng645backend.me/getCrimeData/updateCrimeTypes`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Update successful:', data);
+      alert('Update successful!');
+    })
+    .catch(error => {
+      console.error('Error updating data:', error);
+      alert('Error updating data');
+    });
+  };
+
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+
   return (
-    <div>
-    <Header />
-    <div className={styles['admin-dashboard']}>
-      <h1>Admin Dashboard</h1>
-      <div className={styles.dashboard}>
-        <div className={styles.selection}>
-          <h2>Universities</h2>
-          {universities.map(uni => (
-            <label key={uni} className={styles.checkboxContainer}>
-              {uni}
+    <div className={styles.adminDashboard}>
+      <Header />
+      <h1 className={styles.dashboard}>Admin Dashboard</h1>
+      <ul style={{ listStyleType: 'none', padding: 0 }}>
+        {data.length > 0 ? (
+          data.map(item => (
+            <li key={item.id} className={styles.checkboxContainer}>
+              <label className={styles.checkboxLabel}>{item.description}</label>
               <input
                 type="checkbox"
-                checked={selectedUniversities.includes(uni)}
-                onChange={() => toggleSelection(uni, selectedUniversities, setSelectedUniversities)}
+                className={styles.inputCheckbox}
+                checked={item.isActive}
+                onChange={(e) => handleCheckboxChange(item.id, e.target.checked)}
+                id={`checkbox-${item.id}`}
               />
-              <span className={styles.checkmark}></span>
-            </label>
-          ))}
-        </div>
-        <div className={styles.selection}>
-          <h2>Crimes</h2>
-          {crimes.map(crime => (
-            <label key={crime} className={styles.checkboxContainer}>
-              {crime}
-              <input
-                type="checkbox"
-                checked={selectedCrimes.includes(crime)}
-                onChange={() => toggleSelection(crime, selectedCrimes, setSelectedCrimes)}
-              />
-              <span className={styles.checkmark}></span>
-            </label>
-          ))}
-        </div>
-        <div className={styles.buttonGroup}>
-          <button className={styles.enableButton}>Enable</button>
-          <button className={styles.disableButton}>Disable</button>
-        </div>
+            </li>
+          ))
+        ) : (
+          <p>No data available.</p>
+        )}
+      </ul>
+      <div className={styles.buttonGroup}>
+        <button onClick={handleUpdate} className={styles.enableButton}>Update</button>
       </div>
-    </div>
+      <p>                                   </p>
+      <p>                                   </p>
     </div>
   );
 };

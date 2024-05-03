@@ -10,14 +10,13 @@ import PopupModal from "../PopUp/PopupModal";
 
 const TopNavbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [shareLink, setShareLink] = useState("https://www.example.com/map");
+  const [shareLink, setShareLink] = useState("https://taupe-snickerdoodle-744e96.netlify.app/Dashboard/UMBC");
   const navigate = useNavigate();
 
   const handleShareClick = () => setIsModalOpen(true);
   const handleGetAlertsClick = () => navigate("/Alert");
   const handleGetHomeClick = () => navigate("/");
-  const handleAdminButtonClick = () => navigate("/Admin");
-  const handleGetGraphClick = () => navigate("/Graph");
+  const handleAdminButtonClick = () => navigate("/Admin")
   const handleCopyLink = () => {
     navigator.clipboard
       .writeText(shareLink)
@@ -37,9 +36,6 @@ const TopNavbar = () => {
           </Button>
           <Button sx={{ backgroundColor: '#3498db', color: 'white', marginLeft: '10px', '&:hover': { backgroundColor: '#2980b9' } }} onClick={handleShareClick}>
             Share
-          </Button>
-          <Button sx={{ backgroundColor: '#3498db', color: 'white', marginLeft: '10px', '&:hover': { backgroundColor: '#2980b9' } }} onClick={handleGetGraphClick}>
-            Graphs
           </Button>
           <Button sx={{ backgroundColor: '#e74c3c', color: 'white', marginLeft: '10px', '&:hover': { backgroundColor: '#c0392b' } }} onClick={handleGetAlertsClick}>
             Get Alerts

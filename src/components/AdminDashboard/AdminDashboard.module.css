@@ -1,67 +1,54 @@
 .admin-dashboard {
-  background-color: #fff; /* White background */
-  color: #000; /* Black text color */
+  background-color: #fff;
+  color: #000;
   padding: 20px;
   max-width: 600px;
   margin: 50px auto;
   border-radius: 8px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Light shadow for some depth */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .dashboard {
-  padding: 20px;
-}
-
-.selection {
-  margin-bottom: 20px;
+  padding: 10px;
+  text-align: center;
 }
 
 .checkboxContainer {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-.checkboxContainer input {
-  position: absolute;
-  opacity: 0;
+.checkboxLabel {
+  margin-right: 10px; /* Space between the text and the checkbox */
+}
+
+.inputCheckbox {
   cursor: pointer;
-  height: 0;
-  width: 0;
+  padding: 100px;
+  width: 15px;
+  height: 15px;
+  border-radius: 5px;
 }
 
 .checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 25px;
+  display: inline-block;
   width: 25px;
+  height: 25px;
   background-color: #eee;
   border-radius: 4px;
+  position: relative;
 }
 
-.checkboxContainer :hover input ~ .checkmark {
-  background-color: #ccc;
-}
-
-.checkboxContainer input:checked ~ .checkmark {
-  background-color: #2196f3;
+.inputCheckbox:checked + .checkmark {
+  background-color: #2196F3;
 }
 
 .checkmark:after {
-  content: "";
+  content: '';
   position: absolute;
   display: none;
-}
-
-.checkboxContainer input:checked ~ .checkmark:after {
-  display: block;
-}
-
-.checkboxContainer .checkmark:after {
   left: 9px;
   top: 5px;
   width: 7px;
@@ -71,27 +58,21 @@
   transform: rotate(45deg);
 }
 
+.inputCheckbox:checked + .checkmark:after {
+  display: block;
+}
+
 .buttonGroup {
   display: flex;
   justify-content: center;
-  gap: 10px;
   margin-top: 20px;
 }
 
-.enableButton,
-.disableButton {
+.enableButton {
   padding: 10px 20px;
+  background-color: #4CAF50;
   color: white;
   border: none;
   border-radius: 4px;
-  font-weight: bold;
   cursor: pointer;
-}
-
-.enableButton {
-  background-color: #4caf50; /* Green background */
-}
-
-.disableButton {
-  background-color: #f44336; /* Red background */
 }
