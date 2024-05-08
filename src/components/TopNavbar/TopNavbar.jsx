@@ -28,7 +28,7 @@ const TopNavbar = () => {
     <AppBar position="static" sx={{ backgroundColor: 'black', padding: '3px', alignItems: 'center' }}>
       <Toolbar sx={{ justifyContent: 'space-between', width: '100%' }}>
         <Button sx={{ color: 'white', textTransform: 'none', paddingLeft: '2%' }} onClick={handleGetHomeClick}>
-          <Typography variant="h6">University Crime Map</Typography>
+          <Typography variant="h6">Campus Crime Watch</Typography>
         </Button>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <Button sx={{ backgroundColor: '#3498db', color: 'white', marginLeft: '10px', '&:hover': { backgroundColor: '#2980b9' } }} onClick={handleAdminButtonClick}>

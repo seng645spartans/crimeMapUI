@@ -64,7 +64,7 @@ function Header() {
         <Box sx={{ flexGrow: 1 }} component={Link} to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
           <Button sx={{ color: 'inherit', textTransform: 'none', zIndex: 2 }}>
             <Typography variant="h6">
-              University Crime Map
+              Campus Crime Watch 
             </Typography>
           </Button>
         </Box>
