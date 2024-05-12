@@ -7,7 +7,7 @@ import { jwtDecode } from "jwt-decode";
 const GoogleLoginCustom = () => {
   return (
     <div className={styles.myButton}>
-      <GoogleOAuthProvider clientId="1082635464334-nknq7hmute21rql7j5dk26nl7sadf0hn.apps.googleusercontent.com">
+      <GoogleOAuthProvider clientId="">
         <GoogleLogin
           onSuccess={(credentialResponse) => {
             const jwt = credentialResponse.credential;
